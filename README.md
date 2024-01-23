@@ -1,2 +1,1 @@
-# S53_smartphones_list
-This is your first repository
+In this website we will compare different smartphones and provide the best smartphone which will be in your price range .
