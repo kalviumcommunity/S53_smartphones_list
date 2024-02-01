@@ -1,9 +1,9 @@
 const express=require("express");
 const mongoose=require("mongoose");
-const config=require("./mogodb express/db");
+const config=require("./Database/db");
 const app=express();
 
-app.get("/ping",(req,res)=>{
+app.get("/ping",(req,res)=>{ 
     res.send("pong")
 })
 
