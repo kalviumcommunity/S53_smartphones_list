@@ -8,7 +8,7 @@ app.get("/ping",(req,res)=>{
 })
 
 
-app.get("/home",(req,res)=>{
+app.get("/",(req,res)=>{
     
     try {
       let {mongoURI}=config
