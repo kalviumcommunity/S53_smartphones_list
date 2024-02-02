@@ -1,4 +1,5 @@
 const express = require("express");
+const router=express.Router()
 const mongoose = require("mongoose");
 const config = require("./Database/db");
 const User = require("./schema");
@@ -14,7 +15,7 @@ mongoose.connect(config.mongoURI)
         console.error("MongoDB connection error:", err);
     });
 
-app.get("/post", async (req, res) => {
+router.get("/", async (req, res) => {
     try{
     const getData = await User.find({})
     res.status(201).send(getData)
@@ -24,7 +25,7 @@ app.get("/post", async (req, res) => {
 
 });
 
-app.post("/post", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const newUser = await User.create(req.body);
         if (newUser) {
@@ -39,7 +40,7 @@ app.post("/post", async (req, res) => {
     }
 });
 
-app.patch("/post/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
     try{
     const _id=req.params.id;
     const getData = await User.findByIdAndUpdate(_id,req.body)
@@ -50,7 +51,7 @@ app.patch("/post/:id", async (req, res) => {
 
 });
 
-app.delete("/post/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try{
     const _id=req.params.id;
     const getData = await User.findByIdAndDelete(_id)
@@ -61,6 +62,7 @@ app.delete("/post/:id", async (req, res) => {
 
 });
 
-app.listen(5000, () => {
-    console.log("Listening at port 5000");
-});
+module.exports=router
+// app.listen(5000, () => {
+//     console.log("Listening at port 5000");
+// });

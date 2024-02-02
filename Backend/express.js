@@ -2,10 +2,12 @@ const express=require("express");
 const mongoose=require("mongoose");
 const config=require("./Database/db");
 const app=express();
+app.use(express.json())
 
 app.get("/ping",(req,res)=>{ 
     res.send("pong")
 })
+
 
 
 app.get("/",(req,res)=>{
@@ -19,6 +21,10 @@ app.get("/",(req,res)=>{
     }
 
 })
+
+
+const productRoute = require('./routes')
+app.use('/data', productRoute)
 
 app.listen(4000,()=>{
     console.log("listnening on port 4000");
