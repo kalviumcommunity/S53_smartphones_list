@@ -1,14 +1,15 @@
 import React from 'react'
 import "./Home.css"
-import { useState } from 'react'
-import {Container, Input,VStack,InputGroup,InputRightElement,IconButton,Icon} from '@chakra-ui/react'
-import {SearchIcon} from '@chakra-ui/icons'
+import { useState,useContext } from 'react'
+import {Icon} from '@chakra-ui/react'
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import data from "./Images.json"
+import { AppContext } from '../../Context/Parentcontext'
 
 const Home = () => {
   const [value,setValue]=useState(0);
+  const {isDark,setIsDark}=useContext(AppContext)
   const imageId=data[value];
 
   const increaseId=()=>{
@@ -19,6 +20,8 @@ const Home = () => {
      setValue(value+1)
     }
   }
+
+
   const decreaseId=()=>{
     if(value==0){
       setValue(data.length-1)
@@ -29,15 +32,8 @@ const Home = () => {
   }
 
   return (
-    <div>
-    <Container marginTop="50px" maxW="container.sm">
-      <InputGroup>
-        <Input placeholder="Search items here" size="md" />
-        <InputRightElement>
-          <IconButton backgroundColor="rgb(255, 128, 0)" icon={<SearchIcon />} />
-        </InputRightElement>
-      </InputGroup>
-    </Container>
+
+    <div style={{backgroundColor:isDark?"black":"white"}}>
     <br />
     <div className='banner'>
       <div>
