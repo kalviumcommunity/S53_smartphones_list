@@ -1,8 +1,10 @@
 const express=require("express");
 const mongoose=require("mongoose");
 const config=require("./Database/db");
+const cors=require("cors");
 const app=express();
 app.use(express.json())
+app.use(cors())
 
 app.get("/ping",(req,res)=>{ 
     res.send("pong")
