@@ -33,7 +33,7 @@ const Home = () => {
 
   return (
 
-    <div style={{backgroundColor:isDark?"black":"white"}}>
+    <div style={{backgroundColor:isDark?"black":"white",color:isDark?"white":'black'}}>
     <br />
     <div className='banner'>
       <div>

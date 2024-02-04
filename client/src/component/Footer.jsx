@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Footer.css";
 import { Image, HStack, VStack, Icon, Text,Box } from "@chakra-ui/react";
 import { MdLocationPin } from "react-icons/md";
@@ -8,11 +8,13 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { AppContext } from "../../Context/Parentcontext";
 
 
 const Footer = () => {
+  const {isDark,setIsDark}=useContext(AppContext)
   return (
-    <div className="footer">
+    <div className="footer" style={{backgroundColor:isDark?"white":"black",color:isDark?"black":'white'}}>
       <HStack>
         <VStack  className="Vstack-footer">
           <HStack>

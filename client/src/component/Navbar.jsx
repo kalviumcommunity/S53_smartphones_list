@@ -10,9 +10,9 @@ const Navbar = () => {
    const {isDark,setIsDark}=useContext(AppContext)
     
   return (
-    <div style={{height:"180px"}}>
+    <div style={{height:"200px",backgroundColor:isDark?"black":"white",color:isDark?"white":'black'}}>
  
- <HStack width="100%"  justify="space-evenly" alignItems="center" >
+ <HStack width="100%" height="80px"  justify="space-evenly" alignItems="center" >
     
      <Text>
         Home
@@ -30,7 +30,7 @@ const Navbar = () => {
         Sign in
      </Button>
 
-     <Switch  colorScheme='teal' size='lg' />
+     <Switch onChange={()=>{setIsDark(!isDark)}}  colorScheme='teal' size='lg' />
   <WrapItem>
     <Avatar name='Kola Tioluwani' src='https://bit.ly/tioluwani-kolawole' />
   </WrapItem>
