@@ -1,0 +1,18 @@
+.footer{
+    width: 100%;
+    height: 50vh;
+}
+.icon{
+    width: 50px;
+    /* background-color: red; */
+    
+}
+.icon-texts{
+    width: 180px;
+    /* background-color: blue; */
+
+}
+.Vstack-footer{
+    width: 50%;
+    margin-top: 5%;
+}
