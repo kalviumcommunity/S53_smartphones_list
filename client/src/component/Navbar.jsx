@@ -1,6 +1,6 @@
 import React,{useContext, useState} from 'react'
 import {Text,Flex,Button,Switch,HStack,Icon, Avatar,WrapItem,Container, Input,VStack,InputGroup,InputRightElement,IconButton} from '@chakra-ui/react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {SearchIcon} from '@chakra-ui/icons'
 import { AppContext } from '../../Context/Parentcontext'
 
@@ -13,18 +13,22 @@ const Navbar = () => {
     <div style={{height:"200px",backgroundColor:isDark?"black":"white",color:isDark?"white":'black'}}>
  
  <HStack width="100%" height="80px"  justify="space-evenly" alignItems="center" >
-    
-     <Text>
+    <Link to={"/Home"}>
+    <Text>
         Home
      </Text>
+    </Link>
+    
 
      <Text>
         About
      </Text>
 
-     <Text>
-        Contact
+    <Link to={"/Product"}>
+    <Text>
+        Product
      </Text>
+    </Link>
      
      <Button colorScheme='blue'>
         Sign in
