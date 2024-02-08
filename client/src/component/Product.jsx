@@ -7,7 +7,7 @@ const Product = () => {
   const [data,setData]=useState([]);
   const {isDark,setIsDark}=useState(false)
   useEffect(()=>{
-     axios.get("https://smartphones-list.onrender.com/data")
+     axios.get("http://localhost:4000/data")
      .then(res=>setData(res.data))
      .catch(err=>console.log("error"))
   },[])
@@ -20,29 +20,29 @@ const Product = () => {
  overflow='hidden'
  variant='outline'
 >
- <Image
-  //  objectFit='cover'
-  //  maxW={{ base: '100%', sm: '200px' }}
+  <HStack className="image-class">
+  <Image
    className="image"
    src={item.image}
    alt=''
  />
+  </HStack>
 
- <Stack>
+ <Stack className="cardbody">
    <CardBody>
      <Heading size='md'>{item.name}</Heading>
      <Text py='2'>
-     Ram -{item.ram} |  Rom - {item.rom}
+     Ram -{`${item.ram} Gb`} |  Rom - {`${item.rom} Gb`}
      </Text>
      <Text py='2'>
-     camera - {item.camera} | battery - {item.battery}
+     camera - {`${item.camera} MP`} | battery - {`${item.battery} mAh`}
      </Text>
     
      <Text py='2'>
      operating_system - {item.operating_system}
      </Text>
      <Text py='2'>
-     Price - {item.price}
+     Price - {`$ ${item.price}`}
      </Text>
      <Text>
        Review - {item.review}

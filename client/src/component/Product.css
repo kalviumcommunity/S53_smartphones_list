@@ -6,3 +6,9 @@
 .image{
     height: 300px;
 }
+.image-class{
+    width: 300px;
+}
+.cardbody{
+    width: 80vw;
+}
