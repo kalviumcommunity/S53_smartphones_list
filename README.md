@@ -11,3 +11,7 @@ Benefits and use -
 1. you can select different brands and companies of smartphones and compare .
 2. using this you can be the one who walks with today's technologies . 
 
+
+render link - https://smartphones-list.onrender.com/data
+
+vercel deploy link - https://smartphone-lists.vercel.app/
