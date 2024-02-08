@@ -30,9 +30,11 @@ const Navbar = () => {
      </Text>
     </Link>
      
+     <Link to={"/Formpage"}>
      <Button colorScheme='blue'>
-        Sign in
+        Form
      </Button>
+     </Link>
 
      <Switch onChange={()=>{setIsDark(!isDark)}}  colorScheme='teal' size='lg' />
   <WrapItem>
