@@ -57,7 +57,7 @@ const Formpage = () => {
     console.log(postData);
     
     axios
-      .post("http://localhost:4000/data", postData)
+      .post("https://smartphones-list.onrender.com/data", postData)
       .then((res) => {
         console.log(res);
         toast({
