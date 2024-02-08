@@ -13,7 +13,7 @@ const Navbar = () => {
     <div style={{height:"200px",backgroundColor:isDark?"black":"white",color:isDark?"white":'black'}}>
  
  <HStack width="100%" height="80px"  justify="space-evenly" alignItems="center" >
-    <Link to={"/Home"}>
+    <Link to={"/"}>
     <Text>
         Home
      </Text>
