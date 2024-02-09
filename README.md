@@ -14,4 +14,6 @@ Benefits and use -
 
 render link - https://smartphones-list.onrender.com/data
 
-vercel deploy link - https://smartphone-lists.vercel.app/
+vercel deploy link - https://smartphonelist.vercel.app/
+
+
