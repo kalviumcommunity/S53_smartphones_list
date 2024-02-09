@@ -1,212 +1,175 @@
-import { useState } from "react";
-import axios from "axios";
+import { useForm } from 'react-hook-form'
+import axios from 'axios';
 import {
-  Container,
-  FormControl,
+  FormErrorMessage,
   FormLabel,
+  FormControl,
   Input,
-  Stack,
   Button,
-  Heading,
-  useColorModeValue,
-  VStack,
-  Center,
-  InputGroup,
-  InputRightElement,
-  Checkbox,
-  Link,
-  useToast
-} from "@chakra-ui/react";
+} from '@chakra-ui/react'
 
-const Formpage = () => {
-  const toast = useToast(); // Move the useToast hook inside the functional component
 
-  const [data, setData] = useState({
-    name: "",
-    ram: "",
-    rom: "",
-    review: "",
-    price: "",
-    image: "",
-    camera:"",
-    battery:"",
-    os:""
-  });
+export default function Formpage() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm()
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setData({
-      ...data,
-      [e.target.name]: value,
-    });
-  };
+   
+  const onSubmit = (data) => {
 
-  const handleSubmit = () => {
-    let postData = {
-      name: data.name,
-      ram: data.ram,
-      rom: data.rom,
-      review: data.review,
-      price: data.price,
-      image: data.image,
-      battery:data.battery,
-      camera:data.camera ,
-      os:data.os
-    };
-
-    console.log(postData);
-    
     axios
-      .post("https://smartphones-list.onrender.com/data", postData)
+      .post("https://smartphones-list.onrender.com/data", data)
       .then((res) => {
         console.log(res);
-        toast({
-          title: 'Data created.',
-          description: "Your data is added to our database",
-          status: 'success',
-          duration: 4000,
-          isClosable: true,
-        });
       })
       .catch((error) => {
         console.error("Error:", error);
-        toast({
-          title: 'Error',
-          description: "Failed to create account.",
-          status: 'error',
-          duration: 9000,
-          isClosable: true,
-        });
-      });
+      })
+     
   };
 
   return (
-    <Container maxW="7xl" p={{ base: 5, md: 10 }}>
-      <Center>
-        <Stack spacing={4}>
-          <Stack align="center">
-            <Heading fontSize="2xl">Add your data here</Heading>
-          </Stack>
-          <VStack
-            as="form"
-            boxSize={{ base: "xs", sm: "sm", md: "md" }}
-            h="max-content !important"
-            bg={useColorModeValue("white", "gray.700")}
-            rounded="lg"
-            boxShadow="lg"
-            p={{ base: 5, sm: 10 }}
-            spacing={8}
-          >
-            <VStack spacing={4} w="100%">
-              <FormControl id="text">
-                <FormLabel>Name</FormLabel>
-                <Input
-                  name="name"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
+    <div style={{display:"flex",justifyContent:"center",textAlign:"center"}}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <FormControl minW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='name'>smartphone name</FormLabel>
+        <Input
+          id='name'
+          placeholder='enter smartphone name'
+          {...register('name', {
+            required: 'name is required',
+            minLength: { value: 4, message: 'Minimum length should be 4' },
+          })}
+        />
+          <FormErrorMessage>
+          {errors.name && errors.name.message}
+        </FormErrorMessage>
+      
+      </FormControl>
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='ram'>smartphone ram</FormLabel>
+        <Input
+          id='name'
+          placeholder='enter ram'
+          {...register('ram', {
+            required: 'ram is required',
+            maxLength: { value: 2, message: ' length should be less than 3 digit' },
+          })}
+        />
+          <FormErrorMessage>
+          {errors.ram && errors.ram.message}
+        </FormErrorMessage>
+      
+      </FormControl>
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='rom'>rom</FormLabel>
+        <Input
+          id='rom'
+          placeholder='enter rom'
+          {...register('rom', {
+            required: 'rom is required',
+            maxLength: { value: 4, message: ' length should be less than 5 digit' },
+          })}
+        />
+          <FormErrorMessage>
+          {errors.rom && errors.rom.message}
+        </FormErrorMessage>
+      
+      </FormControl>
 
-              <FormControl id="text">
-                <FormLabel>RAM</FormLabel>
-                <Input
-                  name="ram"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
 
-              <FormControl id="text">
-                <FormLabel>ROM</FormLabel>
-                <Input
-                  name="rom"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor=''>Review</FormLabel>
+        <Input
+          id='review'
+          placeholder='enter review'
+          {...register('review', {
+            required: 'review is required'
+          })}
+        />
+          <FormErrorMessage>
+          {errors.review && errors.review.message}
+        </FormErrorMessage>
+      
+      </FormControl>
 
-              <FormControl id="text">
-                <FormLabel>Review</FormLabel>
-                <Input
-                  name="review"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
 
-              <FormControl id="text">
-                <FormLabel>Price</FormLabel>
-                <Input
-                  name="price"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='price'>smartphone price</FormLabel>
+        <Input
+          placeholder='enter price'
+          {...register('price', {
+            required: 'price is required'
+          })}
+        />
+          <FormErrorMessage>
+          {errors.price && errors.price.message}
+        </FormErrorMessage>
+      
+      </FormControl>
+      
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='Image'>smartphone image</FormLabel>
+        <Input
+          placeholder='enter smartphone image'
+          {...register('image', {
+            required: 'image is required'
+          })}
+        />
+          <FormErrorMessage>
+          {errors.image && errors.image.message}
+        </FormErrorMessage>
+      
+      </FormControl>
 
-              <FormControl id="text">
-                <FormLabel>Image link</FormLabel>
-                <Input
-                  name="image"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='price'>smartphone OS</FormLabel>
+        <Input
+          placeholder='enter Os'
+          {...register('os', {
+            required: 'OS is required'
+          })}
+        />
+          <FormErrorMessage>
+          {errors.os && errors.os.message}
+        </FormErrorMessage>
+      
+      </FormControl>
 
-              <FormControl id="text">
-                <FormLabel>Operating system</FormLabel>
-                <Input
-                  name="os"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='camera'>smartphone camera</FormLabel>
+        <Input
+          placeholder='enter camera in MP'
+          {...register('camera', {
+            required: 'camera is required'
+          })}
+        />
+          <FormErrorMessage>
+          {errors.camera && errors.camera.message}
+        </FormErrorMessage>
+      
+      </FormControl>
 
-              <FormControl id="text">
-                <FormLabel>Battery</FormLabel>
-                <Input
-                  name="battery"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
+      <FormControl maxW={"sm"} isInvalid={errors.name}>
+        <FormLabel htmlFor='battery'>smartphone battery</FormLabel>
+        <Input
+          placeholder='enter battery in maH'
+          {...register('battery', {
+            required: 'battery is required'
+          })}
+        />
+          <FormErrorMessage>
+          {errors.battery && errors.battery.message}
+        </FormErrorMessage>
+      
+      </FormControl>
+      <Button mt={4} colorScheme='teal' isLoading={isSubmitting} type='submit'>
+        Submit
+      </Button>
+    </form>
+    </div>
 
-              <FormControl id="text">
-                <FormLabel>Camera</FormLabel>
-                <Input
-                  name="camera"
-                  onChange={handleChange}
-                  rounded="md"
-                  type="text"
-                />
-              </FormControl>
-            </VStack>
-            <VStack w="100%">
-              <Button
-                bg="green.300"
-                color="white"
-                _hover={{
-                  bg: "green.500",
-                }}
-                rounded="md"
-                w="100%"
-                onClick={handleSubmit}
-              >
-                Add
-              </Button>
-            </VStack>
-          </VStack>
-        </Stack>
-      </Center>
-    </Container>
-  );
-};
-
-export default Formpage;
+  )
+}
