@@ -11,11 +11,11 @@ const Product = () => {
      .then(res=>setData(res.data))
      .catch(err=>console.log("error"))
   },[])
-  console.log(data)
+
   return (
     <div style={{backgroundColor:isDark?"black":"white"}}>
     {data.map((item)=>(
- <Card className="card"
+ <Card key={item._id} className="card"
  direction={{ base: 'column', sm: 'row' }}
  overflow='hidden'
  variant='outline'
@@ -39,7 +39,7 @@ const Product = () => {
      </Text>
     
      <Text py='2'>
-     operating_system - {item.operating_system}
+     operating_system - {item.os}
      </Text>
      <Text py='2'>
      Price - {`$ ${item.price}`}
