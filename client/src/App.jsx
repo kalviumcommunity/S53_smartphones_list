@@ -8,6 +8,7 @@ import Footer from './component/Footer'
 import Product from './component/Product'
 import { Routes,Route } from 'react-router-dom'
 import Formpage from './component/Formpage'
+import Dashboard from './component/Dashboard'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
        <Route path='/' element={<Home />} />
        <Route path='/Product' element={<Product />} />
+       <Route path='/Dashboard' element={<Dashboard />} />
        <Route path='/Formpage' element={<Formpage />} />
       </Routes>
       <Footer />

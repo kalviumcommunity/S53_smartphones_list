@@ -36,6 +36,12 @@ const Navbar = () => {
      </Button>
      </Link>
 
+     <Link to={"/Dashboard"}>
+     <Button colorScheme='blue'>
+        Dashboard
+     </Button>
+     </Link>
+
      <Switch onChange={()=>{setIsDark(!isDark)}}  colorScheme='teal' size='lg' />
   <WrapItem>
     <Avatar name='Kola Tioluwani' src='https://bit.ly/tioluwani-kolawole' />
