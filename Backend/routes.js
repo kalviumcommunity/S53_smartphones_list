@@ -3,9 +3,18 @@ const router=express.Router()
 const mongoose = require("mongoose");
 const config = require("./Database/db");
 const User = require("./schema");
+const validation=require("./joivalidation");
 
 const app = express();
 app.use(express.json());
+
+const validateRequest = (req, res, next) => {
+    const { error } = validation.validate(req.body);
+    if (error) {
+        return res.status(400).json({ error: error.details[0].message });
+    }
+    next();
+};
 
 mongoose.connect(config.mongoURI)
     .then(() => {
@@ -25,7 +34,7 @@ router.get("/", async (req, res) => {
 
 });
 
-router.post("/", async (req, res) => {
+router.post("/", validateRequest, async (req, res) => {
     try {
         console.log(req.body);
         const newUser = await User.create(req.body);
@@ -41,7 +50,8 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.patch("/:id", async (req, res) => {
+
+router.patch("/:id",validateRequest, async (req, res) => {
     try{
     const _id=req.params.id;
     const getData = await User.findByIdAndUpdate(_id,req.body)
@@ -52,7 +62,7 @@ router.patch("/:id", async (req, res) => {
 
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",validateRequest, async (req, res) => {
     try{
     const _id=req.params.id;
     const getData = await User.findByIdAndDelete(_id)
@@ -64,6 +74,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports=router
-// app.listen(5000, () => {
-//     console.log("Listening at port 5000");
-// });
+
