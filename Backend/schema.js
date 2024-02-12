@@ -6,11 +6,11 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     ram: {
-        type: String,
+        type: Number,
         required: true,
     },
     rom: {
-        type: String,
+        type: Number,
         required: true,
     },
     review: {
@@ -25,10 +25,10 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     camera: {
-        type: String,
+        type: Number,
     },
     battery: {
-        type: String
+        type: Number
     },
     os:{
         type:String
