@@ -42,7 +42,12 @@ const Navbar = () => {
      </Button>
      </Link>
 
-     <Switch onChange={()=>{setIsDark(!isDark)}}  colorScheme='teal' size='lg' />
+     <Link to={"/Login"}>
+     <Button colorScheme='blue'>
+       Login
+     </Button>
+     </Link>
+
   <WrapItem>
     <Avatar name='Kola Tioluwani' src='https://bit.ly/tioluwani-kolawole' />
   </WrapItem>
