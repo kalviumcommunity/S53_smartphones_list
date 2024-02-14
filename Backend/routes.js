@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const config = require("./Database/db");
 const User = require("./schema");
 const validation=require("./joivalidation");
+const userModel=require("./userschema");
 
 const app = express();
 app.use(express.json());
@@ -34,7 +35,7 @@ router.get("/", async (req, res) => {
 
 });
 
-router.post("/", validateRequest, async (req, res) => {
+router.post("/",validateRequest,  async (req, res) => {
     try {
         console.log(req.body);
         const newUser = await User.create(req.body);
@@ -50,8 +51,23 @@ router.post("/", validateRequest, async (req, res) => {
     }
 });
 
+router.post("/login",async(req,res)=>{
+    try {
+        const newUser = await userModel.create(req.body);
+        if (newUser) {
+            res.status(201).json(newUser);
+        } else {
+            res.status(400);
+            throw new Error("Failed To Create User");
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
+})
 
-router.patch("/:id",validateRequest, async (req, res) => {
+
+router.patch("/:id", async (req, res) => {
     try{
     const _id=req.params.id;
     const getData = await User.findByIdAndUpdate(_id,req.body)
@@ -62,7 +78,7 @@ router.patch("/:id",validateRequest, async (req, res) => {
 
 });
 
-router.delete("/:id",validateRequest, async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try{
     const _id=req.params.id;
     const getData = await User.findByIdAndDelete(_id)

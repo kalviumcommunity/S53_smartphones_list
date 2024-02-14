@@ -45,14 +45,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("https://smartphones-list.onrender.com/data")
+      .get("http://localhost:4000/data")
       .then((res) => setData(res.data))
       .catch((err) => console.log("error"));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://smartphones-list.onrender.com/data/${id}`)
+      .delete(`http://localhost:4000/data/${id}`)
       .then(() => {
         location.reload()
       })
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   const handleUpdate = () => {
     axios
-      .patch(`https://smartphones-list.onrender.com/data/${selectedItemId}`, {
+      .patch(`http://localhost:4000/data/${selectedItemId}`, {
         rom: inputValue.rom,
         price: inputValue.price,
         image: inputValue.image,

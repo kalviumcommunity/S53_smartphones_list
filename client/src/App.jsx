@@ -9,6 +9,7 @@ import Product from './component/Product'
 import { Routes,Route } from 'react-router-dom'
 import Formpage from './component/Formpage'
 import Dashboard from './component/Dashboard'
+import Loginpage from './component/Loginpage'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -20,7 +21,8 @@ function App() {
        <Route path='/Product' element={<Product />} />
        <Route path='/Dashboard' element={<Dashboard />} />
        <Route path='/Formpage' element={<Formpage />} />
-      </Routes>
+       <Route path='/Login' element={<Loginpage />} />
+      </Routes><br />
       <Footer />
      
     </>

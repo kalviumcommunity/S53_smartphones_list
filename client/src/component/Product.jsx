@@ -7,7 +7,7 @@ const Product = () => {
   const [data,setData]=useState([]);
   const {isDark,setIsDark}=useState(false)
   useEffect(()=>{
-     axios.get("https://smartphones-list.onrender.com/data")
+     axios.get("http://localhost:4000/data")
      .then(res=>setData(res.data))
      .catch(err=>console.log("error"))
   },[])
