@@ -23,7 +23,7 @@ const Loginpage = () => {
     }
 
     const handleSubmit=()=>{
-        axios.post("http://localhost:4000/data/login",{
+        axios.post("https://smartphones-list.onrender.com/data/login",{
           username:data.username,
           password:data.password  
         })
