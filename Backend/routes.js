@@ -5,6 +5,8 @@ const config = require("./Database/db");
 const User = require("./schema");
 const validation=require("./joivalidation");
 const userModel=require("./userschema");
+const jwt = require('jsonwebtoken');
+
 
 const app = express();
 app.use(express.json());
@@ -51,11 +53,17 @@ router.post("/",validateRequest,  async (req, res) => {
     }
 });
 
-router.post("/login",async(req,res)=>{
+
+
+router.post("/login", async (req, res) => {
     try {
         const newUser = await userModel.create(req.body);
         if (newUser) {
-            res.status(201).json(newUser);
+            const {username}= newUser;
+
+            const token = jwt.sign(username, 'secretkey');
+            res.status(201).json({newUser,token}); 
+
         } else {
             res.status(400);
             throw new Error("Failed To Create User");
@@ -64,7 +72,10 @@ router.post("/login",async(req,res)=>{
         console.error(err);
         res.status(500).send("Internal Server Error");
     }
-})
+});
+
+
+
 
 
 router.patch("/:id", async (req, res) => {
