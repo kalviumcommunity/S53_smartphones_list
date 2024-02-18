@@ -7,6 +7,7 @@ import {
   Input,
   Button,
 } from '@chakra-ui/react'
+import { useState } from 'react';
 
 
 export default function Formpage() {
@@ -16,16 +17,20 @@ export default function Formpage() {
     formState: { errors, isSubmitting },
   } = useForm()
 
-   
+  
   const onSubmit = (data) => {
-
+    const userData=(sessionStorage.getItem("token"))
+    console.log(userData)
+    const allData={...data,userData}
     axios
-      .post("https://smartphones-list.onrender.com/data", data)
+      .post("https://smartphones-list.onrender.com/data",allData
+        
+      )
       .then((res) => {
         console.log(res);
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Error:", error); 
       })
      
   };

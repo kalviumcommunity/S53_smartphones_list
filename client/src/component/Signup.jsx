@@ -5,10 +5,12 @@ import {
   FormLabel,
   FormHelperText,
   Input,
-  Button
+  Button,
+  Text
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
-const Loginpage = () => {
+const Signuppage = () => {
   const [data, setData] = useState({
     username: "",
     password: ""
@@ -24,21 +26,18 @@ const Loginpage = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("https://smartphones-list.onrender.com/data/login", {
+      const response = await axios.post("http://localhost:4000/data/signup", {
         username: data.username,
         password: data.password
       });
       console.log(response)
-      sessionStorage.setItem("token",response.data.user.username)
 
     } catch (error) {
       console.error(error);
     }
   };
 
-  const deleteCookie = () => {
-    document.cookie = `token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
-  };
+
 
   return (
     <div style={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
@@ -54,17 +53,23 @@ const Loginpage = () => {
           <Input name='password' onChange={handleChange} minW={"md"} type='password' />
           <FormHelperText>We will never share your password</FormHelperText>
         </FormControl> <br />
-        <Button onClick={handleSubmit} colorScheme='blue'>
+        <Button onClick={handleSubmit} colorScheme='orange'>
+             Sign up
+        </Button>
+        <br /><br />
+        <Text>
+            Already signed up login ?
+        </Text>
+        <br />
+        <Link to={"/Login"}>
+        <Button colorScheme='blue'>
           Login
         </Button>
-        <br />
-        <br />
-        <Button onClick={deleteCookie} colorScheme='blue'>
-          Logout
-        </Button>
+        </Link>
+       
       </div>
     </div>
   );
 };
 
-export default Loginpage;
+export default Signuppage;

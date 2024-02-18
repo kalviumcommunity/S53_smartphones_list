@@ -9,7 +9,8 @@ const validation=joi.object({
     price:joi.number().required(),
     review:joi.string().min(5),
     camera:joi.number(),
-    battery:joi.number()
+    battery:joi.number(),
+    userData:joi.string()
 })
 
 module.exports=validation
