@@ -26,7 +26,7 @@ const Signuppage = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/data/signup", {
+      const response = await axios.post("https://smartphones-list.onrender.com/data/signup", {
         username: data.username,
         password: data.password
       });
