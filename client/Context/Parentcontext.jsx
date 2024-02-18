@@ -7,7 +7,7 @@ const AppProvider=({children})=>{
     const [users,setUsers]=useState([]);
     const[value,setValue] =useState("");
     useEffect(()=>{
-       axios.get('https://smartphones-list.onrender.com/data/signup')
+       axios.get('https://smartphones-list.onrender.com/data')
        .then(res=>setUsers(res.data))
     },[])
 

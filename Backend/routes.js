@@ -6,6 +6,7 @@ const User = require("./schema");
 const validation=require("./joivalidation");
 const userModel=require("./userschema");
 const jwt = require('jsonwebtoken');
+require("dotenv").config();
 
 
 const app = express();
@@ -62,7 +63,7 @@ router.post("/signup", async (req, res) => {
         const newUser = await userModel.create(req.body);
         if (newUser) {
             const {username}= newUser;
-            const token = jwt.sign(username, 'secretkey');
+            const token = jwt.sign(username,process.env.SECRET_KEY);
             res.status(201).json({newUser,token}); 
 
         } else {
