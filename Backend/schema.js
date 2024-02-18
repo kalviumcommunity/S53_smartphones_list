@@ -32,6 +32,9 @@ const productSchema = new mongoose.Schema({
     },
     os:{
         type:String
+    },
+    userData:{
+        type:String
     }
 })
 

@@ -39,7 +39,6 @@ router.get("/", async (req, res) => {
 
 router.post("/",validateRequest,  async (req, res) => {
     try {
-        console.log(req.body);
         const newUser = await User.create(req.body);
         if (newUser) {
             res.status(201).json(newUser);
@@ -52,15 +51,17 @@ router.post("/",validateRequest,  async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+  
 
 
 
-router.post("/login", async (req, res) => {
+
+
+router.post("/signup", async (req, res) => {
     try {
         const newUser = await userModel.create(req.body);
         if (newUser) {
             const {username}= newUser;
-
             const token = jwt.sign(username, 'secretkey');
             res.status(201).json({newUser,token}); 
 
@@ -73,6 +74,40 @@ router.post("/login", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
+router.get("/signup", async (req, res) => {
+    try{
+    const getData = await userModel.find({})
+    res.status(201).send(getData) 
+    }catch(err){
+        res.status(400).send(err) 
+    }
+
+});
+
+
+router.post("/login", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await userModel.findOne({ username });
+        
+        if (user) {
+            if (user.password === password) {
+                const token = jwt.sign({ username: user.username }, 'secretkey');
+                res.status(201).json({ user, token });
+            } else {
+                res.json("The password is incorrect");
+            }
+        } else {
+            res.json("No such user exists");
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json("Internal Server Error");
+    }
+});
+
+
 
 
 
