@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
   FormControl,
@@ -15,6 +16,8 @@ const Signuppage = () => {
     username: "",
     password: ""
   });
+
+  const navigate=useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,6 +38,7 @@ const Signuppage = () => {
     } catch (error) {
       console.error(error);
     }
+    navigate("/Login");
   };
 
 
@@ -45,12 +49,12 @@ const Signuppage = () => {
 
         <FormControl>
           <FormLabel>Username</FormLabel>
-          <Input name='username' onChange={handleChange} minW={"md"} type='email' />
+          <Input name='username' onChange={handleChange} minW={"xm"} type='email' />
         </FormControl>
 
         <FormControl>
           <FormLabel>Password</FormLabel>
-          <Input name='password' onChange={handleChange} minW={"md"} type='password' />
+          <Input name='password' onChange={handleChange} minW={"xm"} type='password' />
           <FormHelperText>We will never share your password</FormHelperText>
         </FormControl> <br />
         <Button onClick={handleSubmit} colorScheme='orange'>

@@ -2,17 +2,26 @@
     width: 100%;
     height: 50vh;
 }
-.icon{
-    width: 50px;
-    /* background-color: red; */
-    
+
+.text{
+    font-size: 15px;
 }
 .icon-texts{
-    width: 180px;
-    /* background-color: blue; */
-
+    width: 15vw;
+}
+.main-stack{
+    display: flex;
+    justify-content: space-evenly;
 }
 .Vstack-footer{
-    width: 50%;
     margin-top: 5%;
+    width: 50vw;
 }
+
+@media only screen and (max-width: 450px) {
+    .text {
+       font-size: 12px;
+    }
+
+ }
+ 

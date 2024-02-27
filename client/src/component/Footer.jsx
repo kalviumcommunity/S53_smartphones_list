@@ -12,17 +12,16 @@ import { AppContext } from "../../Context/Parentcontext";
 
 
 const Footer = () => {
-  const {isDark,setIsDark}=useContext(AppContext)
   return (
-    <div className="footer" style={{backgroundColor:isDark?"white":"black",color:isDark?"black":'white'}}>
-      <HStack>
+    <div className="footer" style={{backgroundColor:"black" ,color:"white"}}>
+      <HStack className="main-stack">
         <VStack  className="Vstack-footer">
           <HStack>
             <Box className="icon">
                 <Icon as={MdLocationPin} color="white" w={10} h={10} />
             </Box>
             <Box className="icon-texts">
-             <Text>
+             <Text className="text">
              LPU , phagwara ,Punjab, <br />
               India
              </Text>
@@ -35,7 +34,7 @@ const Footer = () => {
                 <Icon as={FaPhoneAlt} color="white" w={10} h={8} />
             </Box>
             <Box className="icon-texts">
-             <Text>
+             <Text className="text">
              9234440694
              </Text>
             </Box>
@@ -46,7 +45,7 @@ const Footer = () => {
                 <Icon as={SiGmail} color="white" w={10} h={8} />
             </Box>
             <Box className="icon-texts">
-             <Text>
+             <Text className="text">
               addarshkumar2005@gmail.com
              </Text>
             </Box>
@@ -54,10 +53,10 @@ const Footer = () => {
 
         </VStack>
         <VStack  className="Vstack-footer">
-          <Text>
+          <Text className="text">
             About the website
           </Text>
-          <Text>
+          <Text className="text">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br /> Modi fugit aperiam quibusdam culpa porro incidunt recusandae <br /> officiis aspernatur soluta! Nihil fugiat ullam architecto beatae <br /> temporibus at veritatis deserunt, perferendis minima?
           </Text>
           <HStack>

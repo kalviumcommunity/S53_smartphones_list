@@ -38,7 +38,7 @@ export default function Formpage() {
   return (
     <div style={{display:"flex",justifyContent:"center",textAlign:"center"}}>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl minW={"sm"} isInvalid={errors.name}>
+      <FormControl className='form' isInvalid={errors.name}>
         <FormLabel htmlFor='name'>smartphone name</FormLabel>
         <Input
           id='name'
@@ -53,7 +53,7 @@ export default function Formpage() {
         </FormErrorMessage>
       
       </FormControl>
-      <FormControl maxW={"sm"} isInvalid={errors.name}>
+      <FormControl maxW={"xm"} isInvalid={errors.name}>
         <FormLabel htmlFor='ram'>smartphone ram</FormLabel>
         <Input
           id='name'

@@ -46,12 +46,12 @@ const Loginpage = () => {
 
         <FormControl>
           <FormLabel>Username</FormLabel>
-          <Input name='username' onChange={handleChange} minW={"md"} type='email' />
+          <Input name='username' onChange={handleChange} minW={"xm"} type='email' />
         </FormControl>
 
         <FormControl>
           <FormLabel>Password</FormLabel>
-          <Input name='password' onChange={handleChange} minW={"md"} type='password' />
+          <Input name='password' onChange={handleChange} minW={"xm"} type='password' />
           <FormHelperText>We will never share your password</FormHelperText>
         </FormControl> <br />
         <Button onClick={handleSubmit} colorScheme='blue'>
